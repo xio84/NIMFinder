@@ -120,11 +120,11 @@ class Results extends Component {
   
   //Updates Data
   updaterows(query,search){
-    this.setState({payload : 10});
-    //Buffer
+    //Buffers
     var rows=[];
     var apiBaseUrl;
-    if (search==='Name'){
+    
+    if (search==='Name'){//Search by name
       //Endpoint
       apiBaseUrl = "https://api.stya.net/nim/byname";
       //Asynchronous HTTP request with axios
@@ -139,11 +139,12 @@ class Results extends Component {
       })
       .then((response) =>{
         if(response.data.status==="OK"){
-          // console.log(response);
+            //HTTP Request Success
             Array.prototype.push.apply(rows,response.data.payload);
             this.setState({rows: rows});
           }
           else{
+            // HTTP request failed, usually by expired token
             alert('Request failed, try logging in again')
           }
       })
@@ -157,7 +158,7 @@ class Results extends Component {
         // this.setState({rows: x});
         // console.log(this.state.rows);
     }
-    else if (search==='NIM'){
+    else if (search==='NIM'){//Search by NIM
       apiBaseUrl = "https://api.stya.net/nim/byid";
       axios.get(apiBaseUrl,{
           headers: {
@@ -170,10 +171,12 @@ class Results extends Component {
       })
       .then((response) =>{
         if(response.data.status==="OK"){
+            //HTTP Request Success
             Array.prototype.push.apply(rows,response.data.payload);
             this.setState({rows: rows});
           }
           else{
+            // HTTP request failed, usually by expired token
             alert('Request failed, try logging in again')
           }
       })
@@ -220,6 +223,7 @@ class Results extends Component {
           </TableRow>
         </TableHead>
         <TableBody>
+          {/* Slices and maps data */}
           {this.state.rows.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(row => (
             <TableRow key={row.name}>
               <TableCell>{row.name}</TableCell>

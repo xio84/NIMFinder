@@ -11,7 +11,7 @@ import WarningIcon from '@material-ui/icons/Warning';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-
+//footer
 export function MadeWithLove() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -20,6 +20,7 @@ export function MadeWithLove() {
     );
   }
   
+//CSS for Login page
 export const styles = theme => ({
     '@global': {
       body: {
@@ -45,6 +46,7 @@ export const styles = theme => ({
     },
   });
   
+//CSS for Snackbar
 export const SnackStyles = makeStyles(theme => ({
     success: {
       backgroundColor: green[600],
@@ -71,6 +73,7 @@ export const SnackStyles = makeStyles(theme => ({
     },
   }));
   
+  //Icons used in snackbar
   export const variantIcon = {
     success: CheckCircleIcon,
     warning: WarningIcon,
@@ -78,6 +81,7 @@ export const SnackStyles = makeStyles(theme => ({
     info: InfoIcon,
   };
   
+  //Snackbar handler
   export function MySnackbarContentWrapper(props) {
     const classes = SnackStyles();
     const { className, message, onClose, variant, ...other } = props;
