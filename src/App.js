@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Loginscreen from './LoginPage/LoginScreen'
 import Main from './Routes/Main'
 class App extends Component {
   constructor(props){

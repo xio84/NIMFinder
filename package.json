@@ -2,19 +2,18 @@
   "name": "finder",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://xio84.github.io/NIMFinder",
   "dependencies": {
     "@material-ui/core": "^4.1.1",
     "@material-ui/icons": "^4.2.0",
     "@material-ui/styles": "^4.1.1",
     "axios": "^0.19.0",
-    "material-ui": "^0.20.2",
     "query-string": "^6.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "react-tap-event-plugin": "^3.0.3",
-    "redux": "^4.0.1"
+    "react-tap-event-plugin": "^3.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

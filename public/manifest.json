@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "NIM Finder",
+  "name": "Simple NIM Finder",
   "icons": [
     {
       "src": "favicon.ico",
