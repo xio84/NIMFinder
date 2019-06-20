@@ -157,11 +157,9 @@ class Register extends Component {
   //POST request to /register
   handleClick(event){
     var apiBaseUrl = "https://api.stya.net/nim";
-    console.log("values",this.state.username,this.state.password);
     //To be done:check for empty values before hitting submit
     axios.post(apiBaseUrl+'/register', querystring.stringify({ username: this.state.username, password: this.state.password }))
    .then((response) => {
-     console.log(response);
      if(response.data.code === 0){
        this.setState({opensnack: true, snackmessage: 'Registration success, please login', snackvariant: 'success'});
      }
@@ -205,7 +203,11 @@ class Register extends Component {
                 onChange = {event => {
                   const { value } = event.target;
                   this.setState({ username: value });
-                  console.log('value= '+this.state.password + ' and '+this.state.username)
+                }}
+                onKeyPress= {(e) => {
+                  if(e.key === 'Enter') {
+                    this.handleClick(e);
+                  };
                 }}
               />
             </Grid>
@@ -222,6 +224,11 @@ class Register extends Component {
                 onChange = {event => {
                   const { value } = event.target;
                   this.setState({ password: value });
+                }}
+                onKeyPress= {(e) => {
+                  if(e.key === 'Enter') {
+                    this.handleClick(e);
+                  };
                 }}
               />
             </Grid>

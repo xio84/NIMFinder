@@ -49,11 +49,9 @@ constructor(props){
         "username":token.user,
         "password":token.pass
         }
-        console.log(body);
         axios.post(apiBaseUrl+'login', querystring.stringify({ username: body.username, password: body.password }))
         .then((response) => {
         if(response.data.code === 0){
-          console.log(response);
           this.setState({token: response.data.token, opensnack: true, snackmessage: 'Login success, redirecting...', snackvariant: 'success'});
         }})
         };
@@ -76,22 +74,18 @@ constructor(props){
     "username":this.state.username,
     "password":this.state.password
     }
-    console.log(body);
     axios.post(apiBaseUrl+'login', querystring.stringify({ username: body.username, password: body.password }))
     .then((response) => {
     if(response.data.code === 0){
-      console.log(response);
       if (this.state.Saves === "remember"){
         this.setToken(body.username,body.password);
       }
       this.setState({token: response.data.token, opensnack: true, snackmessage: 'Login success, redirecting...', snackvariant: 'success'});
     }
     else if(response.data.code === -2){
-      console.log(response);
       this.setState({opensnack: true, snackmessage: 'Username and password does not match!', snackvariant: 'error'});
     }
     else{
-      console.log(response);
       this.setState({opensnack: true, snackmessage: 'Username does not exist!', snackvariant: 'error'});
     }
     })
@@ -153,7 +147,11 @@ constructor(props){
               onChange = {event => {
                 const { value } = event.target;
                 this.setState({ username: value });
-                console.log('value= '+this.state.password + ' and '+this.state.username)
+              }}
+              onKeyPress= {(e) => {
+                if(e.key === 'Enter') {
+                  this.handleClick(e);
+                };
               }}
               autoFocus
             />
@@ -170,6 +168,11 @@ constructor(props){
               onChange = {event => {
                 const { value } = event.target;
                 this.setState({ password: value });
+              }}
+              onKeyPress= {(e) => {
+                if(e.key === 'Enter') {
+                  this.handleClick(e);
+                };
               }}
             />
             <FormControlLabel

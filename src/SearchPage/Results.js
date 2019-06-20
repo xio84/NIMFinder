@@ -134,7 +134,7 @@ class Results extends Component {
           },
           params: {
               name: query,
-              count: 100
+              count: 1000
           }
       })
       .then((response) =>{
@@ -165,12 +165,11 @@ class Results extends Component {
           },
           params: {
               query: query,
-              count: 100
+              count: 1000
           }
       })
       .then((response) =>{
         if(response.data.status==="OK"){
-          console.log(response);
             Array.prototype.push.apply(rows,response.data.payload);
             this.setState({rows: rows});
           }
@@ -208,7 +207,6 @@ class Results extends Component {
       )
     }
 
-    console.log(this.state.rows);
   return (
     <React.Fragment>
       <Title>{this.props.search} Search Result</Title>

@@ -108,7 +108,7 @@ class Dashboard extends Component {
       <AppBar position="absolute" className={this.props.classes.appBar}>
         <Toolbar className={this.props.classes.toolbar}>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={this.props.classes.title}>
-            Simple NIM Finder
+            min(NIM)alist Finder
           </Typography>
           <Typography variant="body1" color="inherit" noWrap>
             Hello, {this.props.match.params.usr}. Not you? (
@@ -140,6 +140,11 @@ class Dashboard extends Component {
                   const { value } = event.target;
                   this.setState({ name: value });
                 }}
+                onKeyPress= {(e) => {
+                  if(e.key === 'Enter') {
+                    this.child.updaterows(this.state.name,'Name');
+                  };
+                }}
               />
               <Button
                 fullWidth
@@ -163,6 +168,11 @@ class Dashboard extends Component {
                 onChange = {event => {
                   const { value } = event.target;
                   this.setState({ NIM: value });
+                }}
+                onKeyPress= {(e) => {
+                  if(e.key === 'Enter') {
+                    this.child.updaterows(this.state.NIM,'NIM');
+                  };
                 }}
               />
               <Button
