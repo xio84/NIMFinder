@@ -141,6 +141,7 @@ class Results extends Component {
         if(response.data.status==="OK"){
           // console.log(response);
             Array.prototype.push.apply(rows,response.data.payload);
+            this.setState({rows: rows});
           }
           else{
             alert('Request failed, try logging in again')
@@ -149,7 +150,6 @@ class Results extends Component {
       .catch((error) => {
           console.log(error);
       })
-      this.setState({rows: rows});
 
         //For Strategy Design
         // var operation = new Context(new SearchName(this.props.token, query));
@@ -172,6 +172,7 @@ class Results extends Component {
         if(response.data.status==="OK"){
           console.log(response);
             Array.prototype.push.apply(rows,response.data.payload);
+            this.setState({rows: rows});
           }
           else{
             alert('Request failed, try logging in again')
@@ -180,7 +181,6 @@ class Results extends Component {
       .catch((error) => {
         console.log(error);
       })
-      this.setState({rows: rows});
 
         //For Strategy Design
         // var operation = new Context(new SearchName(this.props.token, query));
