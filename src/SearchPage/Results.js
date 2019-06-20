@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -11,19 +10,19 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
-import { TableFooter, Button, TablePagination } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
+import { TableFooter, TablePagination } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import { withStyles } from '@material-ui/styles';
 
-import Context from './APIEndpoint/Context'
-import SearchName from './APIEndpoint/SearchName'
+//Imports for Strategy Design
+// import Context from './APIEndpoint/Context'
+// import SearchName from './APIEndpoint/SearchName'
+// import SearchNIM from './APIEndpoint/SearchNIM'
 
-
+//CSS styles for table footer
 const useStyles1 = makeStyles(theme => ({
   root: {
     flexShrink: 0,
@@ -31,17 +30,7 @@ const useStyles1 = makeStyles(theme => ({
   },
 }))
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
-
-// const useStyles = makeStyles(theme => ({
-//   seeMore: {
-//     marginTop: theme.spacing(3),
-//   },
-// }));
-
+//Action handlers for table footer components
 function TablePaginationActions(props) {
   const classes = useStyles1();
   const theme = useTheme();
@@ -93,6 +82,7 @@ function TablePaginationActions(props) {
   );
 }
 
+//TablePaginationActions properties
 TablePaginationActions.propTypes = {
   count: PropTypes.number.isRequired,
   onChangePage: PropTypes.func.isRequired,
@@ -100,7 +90,7 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-class Orders extends Component {
+class Results extends Component {
 
   constructor(props){
     super(props);
@@ -110,36 +100,34 @@ class Orders extends Component {
     this.state = {
       page:0,
       rowsPerPage:5,
-      payload:10,
-      APIPage:0,
-      rows : [
-        createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-        createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-        createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-        createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-        createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
-        createData(5, '19 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
-      ],
+      rows : [],
     };
 
+    //Function binders
     this.handleChangePage = this.handleChangePage.bind(this);
     this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this);
     this.updaterows = this.updaterows.bind(this);
   }
 
+  //Creates "pointers" to be referenced from outside component
   componentDidMount() {
     this.props.onRef(this)
   }
+  //Destroys said "pointers"
   componentWillUnmount() {
     this.props.onRef(undefined)
   }
   
+  //Updates Data
   updaterows(query,search){
     this.setState({payload : 10});
+    //Buffer
     var rows=[];
+    var apiBaseUrl;
     if (search==='Name'){
-      var apiBaseUrl = "https://api.stya.net/nim/byname";
-      var rows=[];
+      //Endpoint
+      apiBaseUrl = "https://api.stya.net/nim/byname";
+      //Asynchronous HTTP request with axios
       axios.get(apiBaseUrl,{
           headers: {
               'Auth-Token': this.props.token
@@ -150,13 +138,16 @@ class Orders extends Component {
           }
       })
       .then((response) =>{
-          console.log(response);
-          this.setState({payload : 5});
-          Array.prototype.push.apply(rows,response.data.payload);
-          this.setState({APIPage : this.state.APIPage+1});
+        if(response.data.status==="OK"){
+          // console.log(response);
+            Array.prototype.push.apply(rows,response.data.payload);
+          }
+          else{
+            alert('Request failed, try logging in again')
+          }
       })
       .catch((error) => {
-          this.setState({payload : -3});
+          console.log(error);
       })
       this.setState({rows: rows});
 
@@ -166,8 +157,8 @@ class Orders extends Component {
         // this.setState({rows: x});
         // console.log(this.state.rows);
     }
-    if (search==='NIM'){
-      var apiBaseUrl = "https://api.stya.net/nim/byid";
+    else if (search==='NIM'){
+      apiBaseUrl = "https://api.stya.net/nim/byid";
       axios.get(apiBaseUrl,{
           headers: {
               'Auth-Token': this.props.token
@@ -178,13 +169,16 @@ class Orders extends Component {
           }
       })
       .then((response) =>{
+        if(response.data.status==="OK"){
           console.log(response);
-          this.setState({payload : 5});
-          Array.prototype.push.apply(rows,response.data.payload);
-          this.setState({APIPage : this.state.APIPage+1});
+            Array.prototype.push.apply(rows,response.data.payload);
+          }
+          else{
+            alert('Request failed, try logging in again')
+          }
       })
       .catch((error) => {
-          this.setState({payload : -3});
+        console.log(error);
       })
       this.setState({rows: rows});
 
@@ -196,10 +190,10 @@ class Orders extends Component {
     }
   }
 
+  //Table action handlers
   handleChangePage(event, newPage) {
     this.setState({page:newPage});
   }
-
   handleChangeRowsPerPage(event) {
     this.setState({rowsPerPage : parseInt(event.target.value, 10)});
   }
@@ -260,4 +254,4 @@ class Orders extends Component {
   );}
 }
 
-export default Orders
+export default Results

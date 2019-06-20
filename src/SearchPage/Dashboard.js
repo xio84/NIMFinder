@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import clsx from 'clsx';
 
+//Material-ui imports
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,13 +11,13 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { cyan } from '@material-ui/core/colors'
-
-import Orders from './Orders';
-import Title from './Title';
 import { TextField, Button } from '@material-ui/core';
-import Context from './APIEndpoint/Context'
-import SearchName from './APIEndpoint/SearchName'
 
+//.js file imports
+import Results from './Results';
+import Title from './Title';
+
+//Footer
 function MadeWithLove() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -26,6 +26,7 @@ function MadeWithLove() {
   );
 }
 
+//CSS Styles for Dashboard
 const useStyles = theme => ({
   root: {
     display: 'flex',
@@ -100,32 +101,12 @@ class Dashboard extends Component {
     localStorage.removeItem('pass');
   }
 
-  // searchHandler(){
-  //   console.log('success');
-  //   if (this.state.search==='Name'){
-  //     let operation = new Context(new SearchName(this.props.location.state.token, this.state.name));
-  //     var newrows = operation.searchresults();
-  //     console.log(newrows);
-  //     this.setState({rows: newrows})
-  //     console.log(this.state.rows);
-  //   }
-  // }
-
   render()
   {return (
     <div className={this.props.classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={this.props.classes.appBar}>
         <Toolbar className={this.props.classes.toolbar}>
-          {/* <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(this.props.classes.menuButton, open && this.props.classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <Typography component="h1" variant="h6" color="inherit" noWrap className={this.props.classes.title}>
             Simple NIM Finder
           </Typography>
@@ -140,12 +121,7 @@ class Dashboard extends Component {
         <div className={this.props.classes.appBarSpacer} />
         <Container maxWidth="lg" className={this.props.classes.container}>
           <Grid container spacing={3}>
-            {/* Chart
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-              </Paper>
-            </Grid> */}
-            {/* Recent Deposits */}
+            {/* Search form */}
             <Grid item xs={12}>
               <Paper className={this.props.classes.paper}>
               <Title>Search By...</Title>
@@ -201,10 +177,10 @@ class Dashboard extends Component {
               </div>
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+            {/* Search results */}
             <Grid item xs={12}>
               <Paper className={this.props.classes.paper}>
-                <Orders 
+                <Results 
                 token={this.props.location.state.token}
                 onRef={ref => (this.child = ref)}
                 />

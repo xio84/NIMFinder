@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ErrorIcon from '@material-ui/icons/Error';
@@ -15,8 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export function MadeWithLove() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
-        {'Built with love by the'}
-        {' team.'}
+        {'Built with Material-UI by XIO84'}
       </Typography>
     );
   }

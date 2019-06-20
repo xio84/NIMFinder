@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import querystring from 'query-string';
 import axios from 'axios';
 
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Snackbar from '@material-ui/core/Snackbar';
 
-import {MadeWithLove,styles,SnackStyles,variantIcon,MySnackbarContentWrapper} from './LoginStyles';
+import {MadeWithLove,styles,MySnackbarContentWrapper} from './LoginStyles';
 
 class Login extends Component {
   state = {

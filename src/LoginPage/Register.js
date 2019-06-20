@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import querystring from 'query-string';
 
+//Material-ui imports
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -25,15 +26,16 @@ import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import WarningIcon from '@material-ui/icons/Warning';
 
+//Footer
 function MadeWithLove() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      {' team.'}
+      {'Built with Material-UI by XIO84'}
     </Typography>
   );
 }
 
+//CSS for Register
 const styles = theme => ({
   '@global': {
     body: {
@@ -59,6 +61,7 @@ const styles = theme => ({
   },
 });
 
+//CSS for Snackbars
 const SnackStyles = makeStyles(theme => ({
   success: {
     backgroundColor: green[600],
@@ -85,6 +88,7 @@ const SnackStyles = makeStyles(theme => ({
   },
 }));
 
+//Icons for Snackbars
 const variantIcon = {
   success: CheckCircleIcon,
   warning: WarningIcon,
@@ -92,6 +96,7 @@ const variantIcon = {
   info: InfoIcon,
 };
 
+//Snackbar action handler
 function MySnackbarContentWrapper(props) {
   const classes = SnackStyles();
   const { className, message, onClose, variant, ...other } = props;
@@ -117,6 +122,7 @@ function MySnackbarContentWrapper(props) {
   );
 }
 
+//MySnackbarContentWrapper properties
 MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.node,
@@ -139,6 +145,7 @@ class Register extends Component {
     };
 }
 
+  //Snackbar closing handler
   handleClose(event, reason) {
     if (reason === 'clickaway') {
       return;
@@ -147,6 +154,7 @@ class Register extends Component {
     this.setState({opensnack: false});
   }
 
+  //POST request to /register
   handleClick(event){
     var apiBaseUrl = "https://api.stya.net/nim";
     console.log("values",this.state.username,this.state.password);
