@@ -11,9 +11,19 @@ Sebuah NIM Finder ITB menggunakan React,
 
 ## Bagaimana Caranya?? / Cara memakai aplikasi
 ### Pemasangan : jalankan `npm run start` di terminal anda
-Tetapi jika anda online dan sedang membaca ini, silahkan ke: https://github.com/facebook/create-react-app
+Tetapi jika anda online dan sedang membaca ini, silahkan ke: https://xio84.github.io/NIMFinder/
 ### Memakai aplikasi:
+#### Login:
+![Screenshot](Screenshots/SignIn.png)
+Silahkan masukkan username dan password lalu tekan enter atau klik Sign In untuk masuk, centang remember me untuk menyimpan username dan password. Jika belum terdaftar, klik link di bawah tombol.
 #### Register:
+![Screenshot](Screenshots/SignupSuccess.png)
+Silahkan masukkan username dan password lalu tekan enter atau klik Sign Up untuk mendaftar, jika pendaftaran sukses akan muncul notifikasi seperti pada gambar.
+#### Memasukkan Query:
+![Screenshot](Screenshots/SearchByName.png)
+Silahkan masukkan Nama/NIM dalam kotak yang sesuai lalu tekan enter atau tekan tombol yang sesuai, jika ingin keluar tekan tombol log out di kanan atas
+#### Navigasi Data:
+Silahkan tekan tombol yang berada di bawah tabel untuk berpindah halaman. Tekan angka disamping rows per page untuk mengubah jumlah data per halaman.
 
 ## Apa Isinya?? / Desain aplikasi
 ### Kelas-kelas yang dibuat: 
