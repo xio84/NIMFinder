@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/NIMFinder/static/css/main.2cce8147.chunk.css",
-    "main.js": "/NIMFinder/static/js/main.140976dd.chunk.js",
-    "main.js.map": "/NIMFinder/static/js/main.140976dd.chunk.js.map",
+    "main.js": "/NIMFinder/static/js/main.452822dc.chunk.js",
+    "main.js.map": "/NIMFinder/static/js/main.452822dc.chunk.js.map",
     "runtime~main.js": "/NIMFinder/static/js/runtime~main.ddfd1cfe.js",
     "runtime~main.js.map": "/NIMFinder/static/js/runtime~main.ddfd1cfe.js.map",
     "static/js/2.758ee2c4.chunk.js": "/NIMFinder/static/js/2.758ee2c4.chunk.js",
     "static/js/2.758ee2c4.chunk.js.map": "/NIMFinder/static/js/2.758ee2c4.chunk.js.map",
     "index.html": "/NIMFinder/index.html",
-    "precache-manifest.2badfceb2426d5089994760750ef3055.js": "/NIMFinder/precache-manifest.2badfceb2426d5089994760750ef3055.js",
+    "precache-manifest.9a5aa2c6ccd0b5891f2f079397f8e216.js": "/NIMFinder/precache-manifest.9a5aa2c6ccd0b5891f2f079397f8e216.js",
     "service-worker.js": "/NIMFinder/service-worker.js",
     "static/css/main.2cce8147.chunk.css.map": "/NIMFinder/static/css/main.2cce8147.chunk.css.map"
   }
