@@ -47,10 +47,13 @@ Untuk Sign In / Sign Up : Singleton design pattern, karena dalam page-page ini, 
 Untuk Proses Data : Mediator design pattern, dengan menggunakan kelas results, penampilan dan pemanggilan data dapat dimediasi oleh kelas results
 
 ## Ada Tambahan?? / Library dan kakas yang dipakai
-`react-router` : Untuk routing dan redirecting, [sumber]()
-`axios` : Untuk HTTP Request, [sumber]()
-`query-string` : Untuk mengubah data form menjadi string, dipakai bersama axios, [sumber]()
-`@material-ui` : Untuk UI/UX, [sumber]()
+`react-router` : Untuk routing dan redirecting, [sumber](https://github.com/ReactTraining/react-router)
+
+`axios` : Untuk HTTP Request, [sumber](https://github.com/axios/axios)
+
+`query-string` : Untuk mengubah data form menjadi string, dipakai bersama axios, [sumber](https://www.npmjs.com/package/query-string)
+
+`@material-ui` : Untuk UI/UX, [sumber](https://material-ui.com/)
 
 ## Pendapat Anda?? / Review API
 ### Kelebihan:
